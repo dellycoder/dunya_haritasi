@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="3 boyutlu, interaktif dünya haritası: başkentler, nüfus, güncel hava durumu ve yerel saat." />
+    <meta name="theme-color" content="#050814" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
+    <title>Dünya Atlası 3D</title>
+  </head>
+  <body>
+    <div id="loader" class="loader">
+      <div class="loader-orb"></div>
+      <p class="loader-text">Dünya yükleniyor…</p>
+    </div>
+
+    <div id="globe" aria-label="3 boyutlu dünya haritası"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-logo">🌍</span>
+        <div>
+          <h1>Dünya Atlası <span>3D</span></h1>
+          <p id="country-count">— ülke ve bölge</p>
+        </div>
+      </div>
+
+      <div class="search" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 0 1 5.93 12.1l4.73 4.74-1.41 1.41-4.74-4.73A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"/></svg>
+        <input id="search" type="search" placeholder="Ülke veya başkent ara…" autocomplete="off" spellcheck="false" aria-label="Ülke ara" />
+        <kbd>/</kbd>
+        <ul id="suggestions" class="suggestions" role="listbox"></ul>
+      </div>
+
+      <div class="clocks">
+        <div class="clock-chip" title="Sizin yerel saatiniz">
+          <small>Yerel</small><strong id="clock-local">--:--:--</strong>
+        </div>
+        <div class="clock-chip" title="Eşgüdümlü Evrensel Zaman">
+          <small>UTC</small><strong id="clock-utc">--:--:--</strong>
+        </div>
+      </div>
+    </header>
+
+    <nav class="controls" aria-label="Harita ayarları">
+      <button class="ctrl active" data-toggle="flags" title="Bayrakları göster/gizle"><span>🚩</span><em>Bayraklar</em></button>
+      <button class="ctrl active" data-toggle="clouds" title="Bulut katmanı"><span>☁️</span><em>Bulutlar</em></button>
+      <button class="ctrl active" data-toggle="daynight" title="Gerçek zamanlı gece / gündüz"><span>🌗</span><em>Gece/Gündüz</em></button>
+      <button class="ctrl active" data-toggle="rotate" title="Otomatik dönüş"><span>🔄</span><em>Dönüş</em></button>
+      <button class="ctrl" data-action="random" title="Rastgele bir ülkeye uç"><span>🎲</span><em>Rastgele</em></button>
+      <button class="ctrl" data-action="reset" title="Görünümü sıfırla"><span>🧭</span><em>Sıfırla</em></button>
+    </nav>
+
+    <aside id="panel" class="panel" aria-live="polite" hidden>
+      <button id="panel-close" class="panel-close" aria-label="Paneli kapat"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+      <div id="panel-body"></div>
+    </aside>
+
+    <footer class="credits">
+      Veri: Natural Earth · mledoze/countries · GeoNames · REST Countries · Open-Meteo
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
